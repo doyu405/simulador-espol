@@ -2,78 +2,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Simulador de Examen - ESPOL</title>
+    <title>Simulador Avanzado - ESPOL</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; background: #f9f9f9; }
-        .header { background: #003366; color: white; padding: 20px; text-align: center; border-radius: 8px; }
-        #timer { font-size: 1.2em; font-weight: bold; color: #d32f2f; padding: 15px; text-align: center; background: #fff; border: 2px solid #003366; margin-top: 10px; }
-        .question { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; border-left: 5px solid #003366; }
-        button { background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-size: 1.2em; display: block; margin: 20px auto; }
-        #resultado { font-size: 1.5em; text-align: center; font-weight: bold; margin-top: 20px; }
+        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; background: #f0f2f5; }
+        .question { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .timer-box { position: sticky; top: 0; background: #d32f2f; color: white; padding: 15px; text-align: center; font-size: 20px; z-index: 100; }
+        button { background: #007bff; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; display: block; width: 100%; font-size: 18px; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Simulador de Examen Matemáticas</h1>
-    <p>Nivelación - 20 Preguntas (Dificultad Alta)</p>
-</div>
+<div class="timer-box" id="timer">Tiempo: 90:00</div>
 
-<div id="timer">Tiempo restante: 90:00</div>
-
-<form id="examenForm">
-    <div class="question">
-        <p><strong>1.</strong> Determine si la proposición es equivalente a una tautología: <em>[(p → q) ∧ ¬q] → ¬p</em></p>
-        <input type="radio" name="p1" value="a"> a) Sí, es tautología<br>
-        <input type="radio" name="p1" value="b"> b) No, es contradicción<br>
-        <input type="radio" name="p1" value="c"> c) Es contingencia
+<form id="quizForm">
+    <h2>Parte 1: Selección Múltiple</h2>
+    <div class="question" id="q1">
+        <p>1. [Inserta aquí tu pregunta difícil de nivelación]</p>
+        <input type="radio" name="p1" value="a"> a) Opción A<br>
+        <input type="radio" name="p1" value="b"> b) Opción B<br>
+        <input type="radio" name="p1" value="c"> c) Opción C<br>
+        <input type="radio" name="p1" value="d"> d) Opción D<br>
     </div>
 
-    <div class="question">
-        <p><strong>2.</strong> Sea A = {1, 2, 3}. ¿Cuántos subconjuntos tiene el conjunto potencia P(A)?</p>
-        <input type="radio" name="p2" value="a"> a) 8<br>
-        <input type="radio" name="p2" value="b"> b) 16<br>
-        <input type="radio" name="p2" value="c"> c) 64
+    <h2>Parte 2: Resolución</h2>
+    <div class="question" id="q11">
+        <p>11. [Inserta aquí tu pregunta de graficación o desarrollo]</p>
+        <input type="text" name="p11" placeholder="Escribe tu respuesta final aquí">
     </div>
 
-    <div class="question">
-        <p><strong>11.</strong> Escriba el valor de la suma de las raíces de la ecuación: <em>x² - 5x + 6 = 0</em></p>
-        <input type="number" name="p11" placeholder="Escriba el valor aquí">
-    </div>
-
-    <button type="button" onclick="calificar()">Entregar Examen</button>
+    <button type="button" onclick="finalizar()">Entregar Examen</button>
 </form>
 
-<div id="resultado"></div>
+<div id="resultado" style="text-align:center; padding: 50px;"></div>
 
 <script>
-    // Configuración del tiempo
-    let timeLeft = 5400;
-    const timerDisplay = document.getElementById('timer');
-    const interval = setInterval(() => {
-        let mins = Math.floor(timeLeft / 60);
-        let secs = timeLeft % 60;
-        timerDisplay.textContent = `Tiempo restante: ${mins}:${secs < 10 ? '0'+secs : secs}`;
-        if (timeLeft <= 0) { clearInterval(interval); calificar(); }
-        timeLeft--;
+    // Configuración
+    let tiempo = 90 * 60;
+    const timerElement = document.getElementById('timer');
+    
+    const countdown = setInterval(() => {
+        let m = Math.floor(tiempo / 60);
+        let s = tiempo % 60;
+        timerElement.innerText = `Tiempo: ${m}:${s < 10 ? '0'+s : s}`;
+        if (tiempo <= 0) { clearInterval(countdown); finalizar(); }
+        tiempo--;
     }, 1000);
 
-    // Lógica de calificación
-    function calificar() {
-        clearInterval(interval);
-        let score = 0;
-        // Respuestas correctas (Ejemplos)
-        const correctas = { p1: 'a', p2: 'c', p11: '5' };
+    function finalizar() {
+        clearInterval(countdown);
+        // Aquí defines tus respuestas correctas
+        const respuestasCorrectas = { p1: 'a', p11: '10' /* etc */ };
+        let nota = 0;
         
-        const formData = new FormData(document.getElementById('examenForm'));
-        for (let [name, value] of formData.entries()) {
-            if (value === correctas[name]) score++;
+        const data = new FormData(document.getElementById('quizForm'));
+        for (let [key, value] of data.entries()) {
+            if (value === respuestasCorrectas[key]) nota++;
         }
         
-        document.getElementById('resultado').innerHTML = `Tu nota final es: ${score} / 20`;
-        document.getElementById('examenForm').style.display = 'none';
+        document.getElementById('quizForm').style.display = 'none';
+        document.getElementById('resultado').innerHTML = `<h1>Examen Finalizado</h1><p>Tu nota estimada es: ${nota}/20</p>`;
     }
 </script>
-
 </body>
 </html>
