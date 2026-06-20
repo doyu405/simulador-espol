@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador Universitario - Polinomios y Funciones</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f9;margin:20px}
+.container{max-width:1200px;margin:auto;background:white;padding:25px;border-radius:12px}
+.timer{position:sticky;top:10px;background:#222;color:white;padding:10px;text-align:center;font-size:22px}
+.question{margin:25px 0;padding:15px;border:1px solid #ddd;border-radius:8px}
+.graph{background:#fafafa;border:1px solid #ccc;padding:10px;overflow:auto}
+button{padding:12px 20px;font-size:18px}
+.result{font-size:22px;font-weight:bold;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Simulador Universitario Avanzado</h1>
+<h2>Polinomios y Funciones</h2>
+<div class="timer" id="timer">90:00</div>
+
+<form id="exam">
+
+<h2>Opción Múltiple (10 preguntas)</h2>
+
+<script>
+const mc=[
+["Al dividir P(x)=x⁴−5x³+6x²+4x−8 entre (x−2), el residuo es:","a","8","0","-4","16","24"],
+["Si f(x)=x²−6x+5, el vértice es:","b","(2,1)","(3,-4)","(-3,4)","(5,0)","(0,5)"],
+["El grado de (x²+1)(x³−2x+1) es:","d","3","4","2","5","6"],
+["La suma de raíces de x²−7x+10=0 es:","c","10","5","7","-7","-10"],
+["Una función inyectiva cumple:","a","cada imagen proviene de un único elemento","todo real tiene preimagen","es periódica","es constante","ninguna"],
+["Si g(x)=|x−3|, el mínimo valor es:","b","-3","0","1","3","9"],
+["El rango de x²+4 es:","e","R","(-∞,4]","[0,∞)","(-∞,∞)","[4,∞)"],
+["Si f(2)=5 y g(2)=3, entonces (f+g)(2)=","c","2","5","8","15","0"],
+["La multiplicidad de la raíz x=1 en (x−1)³(x+2) es:","d","0","1","2","3","4"],
+["Si f(x)=2x+1, entonces f⁻¹(x)=","a","(x−1)/2","2x−1","x/2+1","2x+1","1−2x"]
+];
+</script>
+
+<div id="mcq"></div>
+
+<h2>Resolución (10 preguntas)</h2>
+
+<p><b>Escribe únicamente el resultado.</b></p>
+
+<div class="question">11) El residuo de P(x)=2x³−3x²+5x−7 al dividir entre (x−1): <input id="q11"></div>
+<div class="question">12) Si f(x)=x²−5x+6, calcula f(4): <input id="q12"></div>
+<div class="question">13) Suma de raíces de x²−9x+14=0: <input id="q13"></div>
+<div class="question">14) Producto de raíces de x²−9x+14=0: <input id="q14"></div>
+
+<div class="question">
+15) Según la gráfica aproximada de una parábola:
+<div class="graph"><pre>
+y
+8 |         *
+6 |       *   *
+4 |     *       *
+2 |   *           *
+0 +-------------------- x
+    -2  -1  0  1  2
+</pre></div>
+Coordenada x del vértice: <input id="q15">
+</div>
+
+<div class="question">
+16) Según la gráfica:
+<div class="graph"><pre>
+y
+5 |          *
+4 |        *
+3 |      *
+2 |    *
+1 |  *
+0 +---------------- x
+    0 1 2 3 4 5
+</pre></div>
+Pendiente de la recta: <input id="q16">
+</div>
+
+<div class="question">
+17) Para f(x)=x³−4x, calcula f(2): <input id="q17">
+</div>
+
+<div class="question">
+18) Si una función corta al eje x en x=-2 y x=3, ¿cuál es la suma de intersecciones? <input id="q18">
+</div>
+
+<div class="question">
+19) El grado de (x²+1)³ es: <input id="q19">
+</div>
+
+<div class="question">
+20) Si h(x)=|x−5|, calcula h(2): <input id="q20">
+</div>
+
+<button type="button" onclick="calificar()">Entregar examen</button>
+</form>
+
+<div class="result" id="resultado"></div>
+
+<script>
+const mcDiv=document.getElementById("mcq");
+mc.forEach((q,i)=>{
+let html=`<div class="question"><b>${i+1}) ${q[0]}</b><br>`;
+["a","b","c","d","e"].forEach((l,j)=>{
+html+=`<label><input type="radio" name="q${i+1}" value="${l}"> ${l}) ${q[j+2]}</label><br>`;
+});
+html+="</div>";
+mcDiv.innerHTML+=html;
+});
+
+let tiempo=5400;
+setInterval(()=>{
+if(tiempo>0){
+tiempo--;
+let m=Math.floor(tiempo/60);
+let s=tiempo%60;
+document.getElementById("timer").innerText=`${m}:${s.toString().padStart(2,"0")}`;
+}
+},1000);
+
+function calificar(){
+let score=0;
+mc.forEach((q,i)=>{
+let r=document.querySelector(`input[name=q${i+1}]:checked`);
+if(r && r.value===q[1]) score++;
+});
+
+const ans={q11:"-3",q12:"2",q13:"9",q14:"14",q15:"0",q16:"1",q17:"0",q18:"1",q19:"6",q20:"3"};
+for(let k in ans){
+if(document.getElementById(k).value.trim()===ans[k]) score++;
+}
+document.getElementById("resultado").innerHTML=`Puntaje: ${score}/20 (${(score*5).toFixed(2)}/100)`;
+}
+</script>
+</div>
+</body>
+</html>
