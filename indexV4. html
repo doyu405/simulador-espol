@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador Universitario - Polinomios y Funciones</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+    color:#003366;
+}
+
+h2{
+    color:#004c99;
+}
+
+.timer{
+    position:fixed;
+    top:10px;
+    right:10px;
+    background:#003366;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.question{
+    margin-top:35px;
+    padding:20px;
+    border-left:5px solid #004c99;
+    background:#fafafa;
+}
+
+svg{
+    background:white;
+    border:1px solid #ccc;
+    margin-top:15px;
+}
+
+input[type=text]{
+    width:150px;
+    padding:8px;
+    font-size:16px;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#003366;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#001f44;
+}
+
+.resultado{
+    margin-top:30px;
+    font-size:24px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="timer" id="timer">
+90:00
+</div>
+
+<div class="container">
+
+<h1>
+SIMULADOR UNIVERSITARIO AVANZADO
+<br>
+POLINOMIOS Y FUNCIONES
+</h1>
+
+<p>
+Tiempo máximo: 90 minutos.
+Consta de 20 preguntas:
+10 de opción múltiple y 10 de resolución.
+Las preguntas de resolución deben responderse únicamente con el resultado final.
+</p>
+
+<form id="quiz">
+
+<!-- ====================== -->
+<!-- PREGUNTA 1 -->
+<!-- ====================== -->
+
+<div class="question">
+<h2>1. Opción múltiple</h2>
+
+<p>
+Sea
+f(x)=x³−6x²+11x−6.
+
+Determine la suma de las raíces reales.
+</p>
+
+<label><input type="radio" name="q1" value="a"> 3</label><br>
+<label><input type="radio" name="q1" value="b"> 6</label><br>
+<label><input type="radio" name="q1" value="c"> 11</label><br>
+<label><input type="radio" name="q1" value="d"> 1</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 2 -->
+<!-- ====================== -->
+
+<div class="question">
+<h2>2. Opción múltiple</h2>
+
+<p>
+La siguiente gráfica representa una función cuadrática.
+Determine el valor aproximado de su vértice.
+</p>
+
+<svg width="400" height="250">
+
+<line x1="200" y1="0" x2="200" y2="250" stroke="black"/>
+<line x1="0" y1="125" x2="400" y2="125" stroke="black"/>
+
+<path d="M50 200 Q200 40 350 200"
+stroke="blue"
+stroke-width="3"
+fill="none"/>
+
+</svg>
+
+<label><input type="radio" name="q2" value="a"> (0,2)</label><br>
+<label><input type="radio" name="q2" value="b"> (0,5)</label><br>
+<label><input type="radio" name="q2" value="c"> (0,−5)</label><br>
+<label><input type="radio" name="q2" value="d"> (5,0)</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 3 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>3. Opción múltiple</h2>
+
+<p>
+Si el residuo de dividir
+P(x)=x⁴−5x²+2x+7
+
+entre (x−2), es:
+</p>
+
+<label><input type="radio" name="q3" value="a"> 3</label><br>
+<label><input type="radio" name="q3" value="b"> 7</label><br>
+<label><input type="radio" name="q3" value="c"> 11</label><br>
+<label><input type="radio" name="q3" value="d"> 15</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 4 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>4. Opción múltiple</h2>
+
+<p>
+Sea f(x)=2x−3 y g(x)=x²+1.
+
+Calcule (g∘f)(2).
+</p>
+
+<label><input type="radio" name="q4" value="a"> 1</label><br>
+<label><input type="radio" name="q4" value="b"> 2</label><br>
+<label><input type="radio" name="q4" value="c"> 4</label><br>
+<label><input type="radio" name="q4" value="d"> 8</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 5 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>5. Opción múltiple</h2>
+
+<p>
+La gráfica representa una función cúbica.
+¿Cuántas raíces reales posee?
+</p>
+
+<svg width="450" height="250">
+
+<line x1="225" y1="0" x2="225" y2="250" stroke="black"/>
+<line x1="0" y1="125" x2="450" y2="125" stroke="black"/>
+
+<path d="M40 210
+C120 10,180 10,225 125
+C280 250,330 250,410 40"
+stroke="red"
+stroke-width="3"
+fill="none"/>
+
+</svg>
+
+<label><input type="radio" name="q5" value="a"> 1</label><br>
+<label><input type="radio" name="q5" value="b"> 2</label><br>
+<label><input type="radio" name="q5" value="c"> 3</label><br>
+<label><input type="radio" name="q5" value="d"> 4</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 6 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>6. Opción múltiple</h2>
+
+<p>
+Sea
+
+P(x)=x⁴−10x²+9
+
+Determine el número total de raíces reales distintas.
+</p>
+
+<label><input type="radio" name="q6" value="a"> 2</label><br>
+<label><input type="radio" name="q6" value="b"> 3</label><br>
+<label><input type="radio" name="q6" value="c"> 4</label><br>
+<label><input type="radio" name="q6" value="d"> 5</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 7 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>7. Opción múltiple</h2>
+
+<p>
+Considere la siguiente gráfica de una función lineal.
+
+Determine su pendiente.
+</p>
+
+<svg width="450" height="250">
+
+<line x1="225" y1="0" x2="225" y2="250" stroke="black"/>
+<line x1="0" y1="125" x2="450" y2="125" stroke="black"/>
+
+<line
+x1="70"
+y1="210"
+x2="370"
+y2="40"
+stroke="blue"
+stroke-width="4"/>
+
+</svg>
+
+<label><input type="radio" name="q7" value="a"> -1</label><br>
+<label><input type="radio" name="q7" value="b"> 1</label><br>
+<label><input type="radio" name="q7" value="c"> 2</label><br>
+<label><input type="radio" name="q7" value="d"> -2</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 8 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>8. Opción múltiple</h2>
+
+<p>
+Determine el dominio de
+
+f(x)=√(x−4)
+</p>
+
+<label><input type="radio" name="q8" value="a"> x≤4</label><br>
+<label><input type="radio" name="q8" value="b"> x&gt;4</label><br>
+<label><input type="radio" name="q8" value="c"> x≥4</label><br>
+<label><input type="radio" name="q8" value="d"> Todos los reales</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 9 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>9. Opción múltiple</h2>
+
+<p>
+Sea
+
+f(x)=x²−8x+15
+
+Determine la abscisa del vértice.
+</p>
+
+<label><input type="radio" name="q9" value="a"> 2</label><br>
+<label><input type="radio" name="q9" value="b"> 3</label><br>
+<label><input type="radio" name="q9" value="c"> 4</label><br>
+<label><input type="radio" name="q9" value="d"> 5</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 10 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>10. Opción múltiple</h2>
+
+<p>
+La siguiente gráfica representa una función racional.
+
+¿Cuántas asíntotas verticales posee?
+</p>
+
+<svg width="450" height="250">
+
+<line x1="225" y1="0" x2="225" y2="250" stroke="black"/>
+<line x1="0" y1="125" x2="450" y2="125" stroke="black"/>
+
+<line
+x1="150"
+y1="0"
+x2="150"
+y2="250"
+stroke="red"
+stroke-dasharray="8"/>
+
+<line
+x1="320"
+y1="0"
+x2="320"
+y2="250"
+stroke="red"
+stroke-dasharray="8"/>
+
+<path
+d="M10 50 C50 60 90 90 140 240"
+stroke="blue"
+stroke-width="3"
+fill="none"/>
+
+<path
+d="M160 240 C210 140 260 90 310 20"
+stroke="blue"
+stroke-width="3"
+fill="none"/>
+
+<path
+d="M330 20 C380 80 410 150 440 230"
+stroke="blue"
+stroke-width="3"
+fill="none"/>
+
+</svg>
+
+<label><input type="radio" name="q10" value="a"> 1</label><br>
+<label><input type="radio" name="q10" value="b"> 2</label><br>
+<label><input type="radio" name="q10" value="c"> 3</label><br>
+<label><input type="radio" name="q10" value="d"> 4</label>
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 11 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>11. Resolución</h2>
+
+<p>
+Factorice completamente:
+
+x³−6x²+11x−6
+
+Ingrese únicamente la suma de las raíces reales.
+</p>
+
+<input type="text" id="q11">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 12 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>12. Resolución</h2>
+
+<p>
+Determine el residuo de dividir:
+
+P(x)=2x⁴−3x³+x−7
+
+entre (x−2).
+
+Ingrese únicamente el resultado.
+</p>
+
+<input type="text" id="q12">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 13 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>13. Resolución</h2>
+
+<p>
+Determine la imagen de x=5 para
+
+f(x)=x²−4x+7
+
+Ingrese solamente el valor numérico.
+</p>
+
+<input type="text" id="q13">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 14 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>14. Resolución</h2>
+
+<p>
+Determine el valor máximo de la función
+
+f(x)=−x²+8x−7
+</p>
+
+<input type="text" id="q14">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 15 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>15. Resolución</h2>
+
+<p>
+Sea
+
+f(x)=x²−9
+
+Determine la diferencia entre sus dos raíces.
+</p>
+
+<input type="text" id="q15">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 16 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>16. Resolución</h2>
+
+<p>
+Considere la siguiente gráfica de una función cuadrática.
+
+Determine la coordenada x del vértice.
+</p>
+
+<svg width="450" height="250">
+
+<line x1="225" y1="0" x2="225" y2="250" stroke="black"/>
+<line x1="0" y1="125" x2="450" y2="125" stroke="black"/>
+
+<path d="M40 220 Q225 35 410 220"
+stroke="blue"
+stroke-width="3"
+fill="none"/>
+
+</svg>
+
+<input type="text" id="q16">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 17 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>17. Resolución</h2>
+
+<p>
+Sea
+
+f(x)=2x³−5x²−4x+3
+
+Calcule f(−1).
+
+Ingrese únicamente el resultado.
+</p>
+
+<input type="text" id="q17">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 18 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>18. Resolución</h2>
+
+<p>
+Determine la suma de todas las raíces reales de:
+
+x⁴−5x³−2x²+20x−24=0
+
+Ingrese solamente el valor.
+</p>
+
+<input type="text" id="q18">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 19 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>19. Resolución</h2>
+
+<p>
+La siguiente gráfica representa una función por tramos.
+
+Determine f(2).
+</p>
+
+<svg width="500" height="260">
+
+<line x1="250" y1="0" x2="250" y2="260" stroke="black"/>
+<line x1="0" y1="130" x2="500" y2="130" stroke="black"/>
+
+<line
+x1="60"
+y1="210"
+x2="250"
+y2="130"
+stroke="blue"
+stroke-width="4"/>
+
+<line
+x1="250"
+y1="130"
+x2="420"
+y2="50"
+stroke="blue"
+stroke-width="4"/>
+
+<circle cx="250" cy="130" r="5" fill="red"/>
+
+</svg>
+
+<input type="text" id="q19">
+
+</div>
+
+<!-- ====================== -->
+<!-- PREGUNTA 20 -->
+<!-- ====================== -->
+
+<div class="question">
+
+<h2>20. Resolución</h2>
+
+<p>
+Considere la siguiente gráfica de una función cúbica.
+
+Determine cuántos puntos críticos posee.
+</p>
+
+<svg width="500" height="260">
+
+<line x1="250" y1="0" x2="250" y2="260" stroke="black"/>
+<line x1="0" y1="130" x2="500" y2="130" stroke="black"/>
+
+<path d="
+M40 210
+C120 20,
+180 20,
+250 130
+C320 240,
+380 240,
+460 40"
+stroke="green"
+stroke-width="4"
+fill="none"/>
+
+</svg>
+
+<input type="text" id="q20">
+
+</div>
+
+<!-- ====================== -->
+<!-- BOTÓN -->
+<!-- ====================== -->
+
+<div style="text-align:center;margin-top:40px;">
+
+<button type="button" onclick="calificar()">
+ENTREGAR EXAMEN
+</button>
+
+</div>
+
+<div id="resultado" class="resultado"></div>
+
+</form>
+
+<script>
+
+/* ===========================
+   RESPUESTAS CORRECTAS
+=========================== */
+
+const respuestas = {
+
+q1:"b",   // suma raíces = 6
+q2:"b",   // vértice aprox (0,5)
+q3:"d",   // 15
+q4:"a",   // 1
+q5:"c",   // 3 raíces
+
+q6:"c",   // 4 raíces
+q7:"a",   // pendiente negativa
+q8:"c",   // x>=4
+q9:"c",   // x=4
+q10:"b"   // 2 asíntotas
+
+};
+
+/* ===========================
+   CALIFICACIÓN
+=========================== */
+
+function calificar(){
+
+let puntos = 0;
+
+/* OPCIÓN MÚLTIPLE */
+
+for(let i=1;i<=10;i++){
+
+let seleccion =
+document.querySelector(
+`input[name="q${i}"]:checked`
+);
+
+if(
+seleccion &&
+seleccion.value === respuestas["q"+i]
+){
+puntos++;
+}
+
+}
+
+/* RESOLUCIÓN */
+
+if(
+Number(document.getElementById("q11").value)==6
+) puntos++;
+
+if(
+Number(document.getElementById("q12").value)==15
+) puntos++;
+
+if(
+Number(document.getElementById("q13").value)==12
+) puntos++;
+
+if(
+Number(document.getElementById("q14").value)==9
+) puntos++;
+
+if(
+Number(document.getElementById("q15").value)==6
+) puntos++;
+
+if(
+Number(document.getElementById("q16").value)==0
+) puntos++;
+
+if(
+Number(document.getElementById("q17").value)==-10
+) puntos++;
+
+if(
+Number(document.getElementById("q18").value)==5
+) puntos++;
+
+if(
+Number(document.getElementById("q19").value)==2
+) puntos++;
+
+if(
+Number(document.getElementById("q20").value)==2
+) puntos++;
+
+
+/* RESULTADO */
+
+let nota = (puntos/20)*10;
+
+document.getElementById("resultado").innerHTML=
+`
+<hr>
+<h2>EXAMEN FINALIZADO</h2>
+
+<p>
+Preguntas correctas:
+<b>${puntos}/20</b>
+</p>
+
+<p>
+Calificación:
+<b>${nota.toFixed(2)}/10</b>
+</p>
+`;
+
+window.scrollTo(
+0,
+document.body.scrollHeight
+);
+
+}
+
+/* ===========================
+   TEMPORIZADOR 90 MIN
+=========================== */
+
+let tiempo = 90*60;
+
+function actualizarTimer(){
+
+let minutos =
+Math.floor(tiempo/60);
+
+let segundos =
+tiempo%60;
+
+document.getElementById("timer")
+.innerHTML =
+String(minutos).padStart(2,'0')
++
+":"
++
+String(segundos).padStart(2,'0');
+
+if(tiempo<=0){
+
+clearInterval(intervalo);
+
+alert(
+"Tiempo agotado. El examen será enviado automáticamente."
+);
+
+calificar();
+
+return;
+}
+
+tiempo--;
+
+}
+
+actualizarTimer();
+
+let intervalo =
+setInterval(
+actualizarTimer,
+1000
+);
+
+</script>
+
+</div>
+</body>
+</html>
