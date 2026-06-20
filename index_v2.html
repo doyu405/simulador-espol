@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESPOL V5 - Nivel Extremo</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+max-width:1200px;
+margin:auto;
+padding:20px;
+background:#f4f4f4;
+}
+
+h1,h2{
+text-align:center;
+}
+
+.question{
+background:white;
+padding:15px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 0 5px rgba(0,0,0,.2);
+}
+
+.timer{
+position:fixed;
+top:10px;
+right:10px;
+background:white;
+padding:10px;
+border:2px solid black;
+font-size:20px;
+font-weight:bold;
+}
+
+button{
+padding:12px 20px;
+font-size:18px;
+cursor:pointer;
+}
+
+#resultado{
+font-size:24px;
+font-weight:bold;
+text-align:center;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="timer">
+⏱️ <span id="time">90:00</span>
+</div>
+
+<h1>SIMULADOR ESPOL V5</h1>
+<h2>Dificultad Extrema</h2>
+
+<form id="exam">
+
+<div class="question">
+<b>1)</b> [(p→q)∧(q→r)∧(r→¬p)] es equivalente a:
+<br><input type="radio" name="q1"> p
+<br><input type="radio" name="q1"> q
+<br><input type="radio" name="q1"> r
+<br><input type="radio" name="q1" value="1"> ¬p
+<br><input type="radio" name="q1"> ¬r
+</div>
+
+<div class="question">
+<b>2)</b> Determine C.
+<br><input type="radio" name="q2" value="1"> {1,5,6}
+<br><input type="radio" name="q2"> {1}
+<br><input type="radio" name="q2"> {5,6}
+<br><input type="radio" name="q2"> A
+<br><input type="radio" name="q2"> {1,2,5,6}
+</div>
+
+<div class="question">
+<b>3)</b> Ap para √(16-|4x−8|)
+<br><input type="radio" name="q3"> [1,3]
+<br><input type="radio" name="q3"> (1,3)
+<br><input type="radio" name="q3" value="1"> [0,4]
+<br><input type="radio" name="q3"> (0,4)
+<br><input type="radio" name="q3"> R
+</div>
+
+<div class="question">
+<b>4)</b> La operación max(x,y):
+<br><input type="radio" name="q4">
+No es asociativa
+<br><input type="radio" name="q4">
+No tiene neutro
+<br><input type="radio" name="q4">
+El neutro es el mínimo
+<br><input type="radio" name="q4">
+El neutro es el máximo
+<br><input type="radio" name="q4" value="1">
+Es conmutativa y asociativa
+</div>
+
+<div class="question">
+<b>5)</b> Simplifique la expresión algebraica.
+<br><input type="radio" name="q5">
+x+3
+<br><input type="radio" name="q5" value="1">
+x−3
+<br><input type="radio" name="q5">
+1/(x+3)
+<br><input type="radio" name="q5">
+1/(x−3)
+<br><input type="radio" name="q5">
+3
+</div>
+
+<div class="question">
+<b>6)</b> Valor de k:
+<br><input type="radio" name="q6">
+1
+<br><input type="radio" name="q6">
+2
+<br><input type="radio" name="q6" value="1">
+3
+<br><input type="radio" name="q6">
+4
+<br><input type="radio" name="q6">
+5
+</div>
+
+<div class="question">
+<b>7)</b> Rango de x²−6|x|+5
+<br><input type="radio" name="q7" value="1">
+[-4,+∞)
+<br><input type="radio" name="q7">
+[-5,+∞)
+<br><input type="radio" name="q7">
+[-6,+∞)
+<br><input type="radio" name="q7">
+[0,+∞)
+<br><input type="radio" name="q7">
+R
+</div>
+
+<div class="question">
+<b>8)</b> (f∘g)(2)
+<br><input type="radio" name="q8">
+5
+<br><input type="radio" name="q8">
+6
+<br><input type="radio" name="q8" value="1">
+7
+<br><input type="radio" name="q8">
+8
+<br><input type="radio" name="q8">
+9
+</div>
+
+<div class="question">
+<b>9)</b> Dominio:
+<br><input type="radio" name="q9" value="1">
+(-∞,-4)∪[2,4)
+<br><input type="radio" name="q9">
+(-4,4)
+<br><input type="radio" name="q9">
+[2,+∞)
+<br><input type="radio" name="q9">
+(-∞,4)
+<br><input type="radio" name="q9">
+R
+</div>
+
+<div class="question">
+<b>10)</b> La función:
+<br><input type="radio" name="q10">
+Inyectiva
+<br><input type="radio" name="q10">
+Sobreyectiva
+<br><input type="radio" name="q10">
+Biyectiva
+<br><input type="radio" name="q10" value="1">
+No inyectiva
+<br><input type="radio" name="q10">
+Constante
+</div>
+
+<h2>Desarrollo</h2>
+
+<div class="question">
+11) A[p(x)∧q(x)]<br>
+<input type="text" data-answer="[2,5]">
+</div>
+
+<div class="question">
+12) Suma de los tres naturales<br>
+<input type="text" data-answer="45">
+</div>
+
+<div class="question">
+13) Dominio<br>
+<input type="text" data-answer="(-3,3)∪[5,+∞)">
+</div>
+
+<div class="question">
+14) Rango<br>
+<input type="text" data-answer="[-9,+∞)">
+</div>
+
+<div class="question">
+15) (f∘g)(2)<br>
+<input type="text" data-answer="13">
+</div>
+
+<div class="question">
+16) Residuo<br>
+<input type="text" data-answer="31">
+</div>
+
+<div class="question">
+17) Intersección<br>
+<input type="text" data-answer="{3,4,5}">
+</div>
+
+<div class="question">
+18) Raíz mayor<br>
+<input type="text" data-answer="3">
+</div>
+
+<div class="question">
+19) f(4)<br>
+<input type="text" data-answer="4">
+</div>
+
+<div class="question">
+20) Mínimo valor<br>
+<input type="text" data-answer="0">
+</div>
+
+<button type="button" onclick="calificar()">
+Enviar examen
+</button>
+
+</form>
+
+<div id="resultado"></div>
+
+<script>
+
+let tiempo=5400;
+
+setInterval(()=>{
+if(tiempo>0){
+tiempo--;
+
+let m=Math.floor(tiempo/60);
+let s=tiempo%60;
+
+document.getElementById("time").innerHTML=
+String(m).padStart(2,'0')+":"+
+String(s).padStart(2,'0');
+}
+},1000);
+
+function calificar(){
+
+let nota=0;
+
+for(let i=1;i<=10;i++){
+
+let seleccion=document.querySelector(
+'input[name="q'+i+'"]:checked'
+);
+
+if(seleccion && seleccion.value=="1"){
+nota++;
+}
+
+}
+
+document.querySelectorAll(
+'input[type="text"]'
+).forEach(x=>{
+
+if(
+x.value.trim()===
+x.dataset.answer
+){
+nota++;
+}
+
+});
+
+document.getElementById("resultado")
+.innerHTML=
+"Resultado Final: "+
+nota+
+"/20";
+
+}
+
+</script>
+
+</body>
+</html>
